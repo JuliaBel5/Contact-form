@@ -1,0 +1,54 @@
+@use "variables.scss" as vars;
+@use "sass:color";
+
+.submit-button {
+  min-height: 30px;
+  border-radius: 10px;
+  background: vars.$button-color;
+  color: #1c78f0;
+  border: none;
+  padding: 10px 15px;
+  width: 90%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 15px 15px 22px vars.$button-color-dark,
+    -15px -15px 22px vars.$button-color-light;
+
+  &:hover {
+    background: color.adjust(vars.$button-color, $lightness: 10%);
+    box-shadow: 15px 15px 22px vars.$button-color-dark,
+      -15px -15px 22px vars.$button-color-light;
+  }
+
+  &:active {
+    box-shadow: inset 15px 15px 22px vars.$button-color-dark,
+      inset -15px -15px 22px vars.$button-color-light;
+  }
+}
+
+.modal-button {
+  margin-top: 30px;
+  border-radius: 10px;
+  background: vars.$secondary-color;
+  color: #1c78f0;
+  border: none;
+  padding: 10px 15px;
+  max-width: 450px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 15px 15px 22px vars.$button-color-dark,
+    -15px -15px 22px vars.$modal-button-color-light;
+
+  &:hover {
+    background: color.adjust(vars.$button-color, $lightness: 10%);
+    box-shadow: 15px 15px 22px vars.$button-color-dark,
+      -15px -15px 22px vars.$modal-button-color-light;
+  }
+
+  &:active {
+    box-shadow: inset 15px 15px 22px vars.$button-color-dark,
+      inset -15px -15px 22px vars.$modal-button-color-light;
+  }
+}

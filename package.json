@@ -17,5 +17,8 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack"
+  },
+  "dependencies": {
+    "imask": "^7.6.1"
   }
 }
