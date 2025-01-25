@@ -1,0 +1,71 @@
+@use "variables.scss" as vars;
+
+.form-container {
+  background: vars.$primary-color;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px #ffffff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  max-width: 600px;
+
+  h1 {
+    text-align: center;
+    color: vars.$secondary-color;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+
+  input,
+  textarea,
+  button {
+    margin: 10px 0;
+  }
+
+  input,
+  textarea {
+    width: 90%;
+    min-height: 30px;
+    padding: 0 1rem;
+    padding-left: 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: vars.$input-background-color;
+    box-shadow: 0 0 5px #c1d9bf, 0 0 0 10px #f5f5f5eb;
+    transition: 0.3s ease;
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+      border-color: vars.$secondary-color;
+    }
+  }
+  .input::placeholder {
+    color: #777;
+  }
+
+  textarea {
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  label {
+    display: block;
+    align-self: flex-start;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+}
