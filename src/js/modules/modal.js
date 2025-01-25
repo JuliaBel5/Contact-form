@@ -33,11 +33,13 @@ export function setupModal() {
 }
 export function showModal(message) {
   const modal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal-content");
   const modalText = modal ? modal.querySelector("p") : null;
 
   if (modal && modalText) {
     modalText.textContent = message;
     modal.classList.add("show");
+    modalContent.classList.add("shakeModal");
     document.body.style.overflow = "hidden";
   }
 }

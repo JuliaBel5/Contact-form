@@ -18,12 +18,13 @@ export function renderForm(container) {
       placeholder: "Enter your name",
       id: "name",
       name: "name",
-      required: true,
+      type: "text",
+      maxlength: "30",
     },
     form
   );
 
-  createFormElement("label", { htmlFor: "email", textContent: "Email" }, form);
+  createFormElement("label", { htmlFor: "email", textContent: "E-mail" }, form);
   createFormElement(
     "input",
     {
@@ -31,22 +32,19 @@ export function renderForm(container) {
       id: "email",
       placeholder: "Enter your e-mail address",
       name: "email",
-      required: true,
+      maxlength: "30",
     },
     form
   );
 
-  const pattern = "^\\+?\\(?\\d{1,4}\\)?[-\\s\\d]*$";
   createFormElement("label", { htmlFor: "phone", textContent: "Phone" }, form);
   createFormElement(
     "input",
     {
       type: "text",
-      placeholder: "+{7}(000)000-00-00",
       id: "phone",
       name: "phone",
-      pattern: pattern,
-      required: true,
+      placeholder: "+375(12)123-55-67",
     },
     form
   );
@@ -60,9 +58,9 @@ export function renderForm(container) {
     "textarea",
     {
       id: "message",
-      placeholder: "Type here your message",
+      placeholder: "Type here your message (max 500 char)",
       name: "message",
-      required: true,
+      maxlength: "500",
     },
     form
   );
