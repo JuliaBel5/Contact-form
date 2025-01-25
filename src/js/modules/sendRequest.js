@@ -1,46 +1,37 @@
 import { showModal } from "./modal";
+import { showLoader, hideLoader } from "./loader";
 
 export function sendRequest(formElement) {
-  formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const formData = new FormData(formElement);
+  const loader = showLoader(formElement);
 
-    const formData = new FormData(formElement);
+  const fakeFetch = new Promise((resolve) => {
+    setTimeout(() => {
+      const fakeResponse = {
+        status: "success",
+        msg: "Thank you for your feedback",
+      };
 
-    const fakeFetch = new Promise((resolve) => {
-      setTimeout(() => {
-        const fakeResponse = {
-          status: "success",
-          msg: "Thank you for your feedback",
-        };
-
-        resolve(new Response(JSON.stringify(fakeResponse)));
-      }, 500);
-    });
-
-    fakeFetch
-      .then((response) => response.json())
-      .then((data) => {
-        clearErrors(formElement);
-
-        if (data.status === "success") {
-          showModal(data.msg);
-          formElement.reset();
-        } else if (data.status === "error") {
-          handleErrors(data.fields, formElement);
-        }
-      })
-      .catch((error) => {
-        console.error("Error on message submitting:", error);
-      });
+      resolve(new Response(JSON.stringify(fakeResponse)));
+    }, 2000);
   });
-}
 
-function clearErrors(formElement) {
-  const errorElements = formElement.querySelectorAll(".error");
-  errorElements.forEach((errorElement) => errorElement.remove());
+  fakeFetch
+    .then((response) => response.json())
+    .then((data) => {
+      hideLoader(loader);
 
-  const errorBorders = formElement.querySelectorAll(".error-message");
-  errorBorders.forEach((input) => input.classList.remove("error-message"));
+      if (data.status === "success") {
+        showModal(data.msg);
+        formElement.reset();
+      } else if (data.status === "error") {
+        handleErrors(data.fields, formElement);
+      }
+    })
+    .catch((error) => {
+      console.error("Error on message submitting:", error);
+      hideLoader(loader);
+    });
 }
 
 function handleErrors(fields, formElement) {
@@ -50,9 +41,9 @@ function handleErrors(fields, formElement) {
     if (input) {
       const errorElement = document.createElement("div");
       errorElement.textContent = fields[field];
-      errorElement.classList.add("error");
+      errorElement.classList.add("error-message");
       input.after(errorElement);
-      input.classList.add("error-message");
+      input.classList.add("error");
     }
   });
 }

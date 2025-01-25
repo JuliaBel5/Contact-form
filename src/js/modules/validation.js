@@ -33,7 +33,7 @@ export function validateForm(event, form) {
   }
   if (!formData.get("message")) {
     errors.message = "Message is required.";
-  } else if (!/^[A-ZА-Я]/.test(formData.get("name"))) {
+  } else if (!/^[A-ZА-Я]/.test(formData.get("message"))) {
     errors.message = "Message should start with a capital letter.";
   }
 
