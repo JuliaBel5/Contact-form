@@ -60,6 +60,15 @@ form {
   textarea {
     height: 100px;
     font-family: Arial, Helvetica, sans-serif;
+    resize: none;
+  }
+
+  .counter {
+    margin-right: 10px;
+    align-self: flex-end;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
   }
 
   label {
