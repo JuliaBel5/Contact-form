@@ -61,7 +61,7 @@ export function renderForm(container) {
     form
   );
 
-  textarea.setAttribute("maxlength", "500");
+  textarea.setAttribute("maxlength", "300");
 
   const submitButton = createFormElement(
     "button",
