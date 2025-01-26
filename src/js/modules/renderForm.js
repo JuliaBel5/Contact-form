@@ -63,6 +63,31 @@ export function renderForm(container) {
 
   textarea.setAttribute("maxlength", "300");
 
+  const counter = createFormElement(
+    "div",
+    {
+      textContent: `Characters left: 300`,
+      className: "counter",
+    },
+    form
+  );
+
+  function updateCounter(textarea, counter) {
+    const maxLength = textarea.getAttribute("maxlength");
+    const remaining = maxLength - textarea.value.length;
+    counter.textContent = `Characters left: ${remaining}`;
+
+    if (remaining <= 10) {
+      counter.style.color = "red";
+    } else {
+      counter.style.color = "#777";
+    }
+  }
+
+  textarea.addEventListener("input", () => {
+    updateCounter(textarea, counter);
+  });
+
   const submitButton = createFormElement(
     "button",
     { type: "submit", textContent: "Submit" },
