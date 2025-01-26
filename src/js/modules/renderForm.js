@@ -55,7 +55,7 @@ export function renderForm(container) {
     "textarea",
     {
       id: "message",
-      placeholder: "Type here your message (max 500 char)",
+      placeholder: "Type here your message (max 300 char.)",
       name: "message",
     },
     form
