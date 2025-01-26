@@ -11,19 +11,17 @@ export function renderForm(container) {
   form.id = "contact-form";
 
   createFormElement("label", { htmlFor: "name", textContent: "Name" }, form);
-  createFormElement(
+  const input = createFormElement(
     "input",
     {
       type: "text",
       placeholder: "Enter your name",
       id: "name",
       name: "name",
-      type: "text",
-      maxlength: "30",
     },
     form
   );
-
+  input.setAttribute("maxlength", "30");
   createFormElement("label", { htmlFor: "email", textContent: "E-mail" }, form);
   createFormElement(
     "input",
@@ -32,7 +30,6 @@ export function renderForm(container) {
       id: "email",
       placeholder: "Enter your e-mail address",
       name: "email",
-      maxlength: "30",
     },
     form
   );
@@ -54,16 +51,17 @@ export function renderForm(container) {
     { htmlFor: "message", textContent: "Message" },
     form
   );
-  createFormElement(
+  const textarea = createFormElement(
     "textarea",
     {
       id: "message",
-      placeholder: "Type here your message (max 500 char)",
+      placeholder: "Type here your message (max 300 char.)",
       name: "message",
-      maxlength: "500",
     },
     form
   );
+
+  textarea.setAttribute("maxlength", "300");
 
   const submitButton = createFormElement(
     "button",
